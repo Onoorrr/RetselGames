@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using RetselGames.Entity.Entities;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace RetselGames.Data.Context
 {
-	public class AppDbContext : DbContext
+	public class AppDbContext : IdentityDbContext<AppUser,AppRole,Guid,AppUserClaim,AppUserRole,AppUserLogin,AppRoleClaim,AppUserToken>
 	{
-		protected AppDbContext()
+		public AppDbContext()
 		{
 		}
 		public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
@@ -26,6 +27,7 @@ namespace RetselGames.Data.Context
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
+			base.OnModelCreating(modelBuilder);
 			modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());	
 		}
 
