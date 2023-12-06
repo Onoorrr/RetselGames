@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using RetselGames.Service.Services.Abstractions;
+using RetselGames.Service.Services.Concretes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +12,9 @@ namespace RetselGames.Service.Extensions
 {
 	public static class ServiceLayerExtensions
 	{
-		public static IServiceCollection LoadServiceExtension(this IServiceCollection services)
+		public static IServiceCollection LoadServiceLayerExtension(this IServiceCollection services)
 		{
+			services.AddScoped<ICategoryServices, CategoryService>();
 			var assembly = Assembly.GetExecutingAssembly();
 
 			services.AddAutoMapper(assembly);

@@ -19,5 +19,5 @@ namespace RetselGames.Service.Services.Concretes
 			this.unitofwork = unitofwork;
 			this.mapper = mapper;
 		}	
-	}
+	}	
 }

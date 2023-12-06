@@ -25,10 +25,11 @@ namespace RetselGames.Data.Context
 		public DbSet<Image> Images { get; set; }
 		public DbSet<Category> Categories { get; set; }
 
-		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		protected override void OnModelCreating(ModelBuilder builder)
 		{
-			base.OnModelCreating(modelBuilder);
-			modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());	
+			base.OnModelCreating(builder);
+			builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());	
+
 		}
 
 	}

@@ -10,8 +10,8 @@ namespace RetselGames.Data.UnitofWorks
 {
 	public interface IUnitofWork : IAsyncDisposable
 	{
-		IRepository<T> GetRepository<T>() where T : class, IEntitiyBase, new();
-
+		IRepository<T> GetRepository<T>() where T : class, IEntitiyBase, new();	
+		
 		Task<int> SaveAsync();
 		int Save();
 	}

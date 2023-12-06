@@ -37,6 +37,32 @@ namespace RetselGames.Data.Mappings
 
 			// Each Role can have many associated RoleClaims
 			builder.HasMany<AppRoleClaim>().WithOne().HasForeignKey(rc => rc.RoleId).IsRequired();
+
+			builder.HasData(new
+				AppRole
+			{
+				Id = Guid.Parse("E00726F9-87C1-4540-AB1E-3B0D3135868D"),
+				Name = "Superadmin",
+				NormalizedName = "SUPERADMIN",
+				ConcurrencyStamp = Guid.NewGuid().ToString()
+
+			},
+
+			new AppRole
+			{
+				Id = Guid.Parse("F9496293-0393-4FC7-A3D0-51D17DF4C821"),
+				Name = "Admin",
+				NormalizedName = "ADMIN",
+				ConcurrencyStamp = Guid.NewGuid().ToString()
+			},
+			new AppRole
+			{
+				Id = Guid.Parse("50BF0616-6BFF-491C-800B-BFE7E8BFBBD9"),
+				Name = "User",
+				NormalizedName = "USER",
+				ConcurrencyStamp = Guid.NewGuid().ToString()
+			}
+			);
 		}
 	}
 }
