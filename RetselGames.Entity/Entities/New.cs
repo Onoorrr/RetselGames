@@ -11,7 +11,7 @@ namespace RetselGames.Entity.Entities
     {
         public string Title { get; set; }
         public string Content { get; set; }
-        public Guid ImageId { get; set; }
+        public Guid? ImageId { get; set; }
         public Image Image { get; set; }
 
 

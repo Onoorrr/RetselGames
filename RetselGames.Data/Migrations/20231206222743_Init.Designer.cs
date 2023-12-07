@@ -12,8 +12,8 @@ using RetselGames.Data.Context;
 namespace RetselGames.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231206180516_UserCreated")]
-    partial class UserCreated
+    [Migration("20231206222743_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -55,21 +55,21 @@ namespace RetselGames.Data.Migrations
                         new
                         {
                             Id = new Guid("e00726f9-87c1-4540-ab1e-3b0d3135868d"),
-                            ConcurrencyStamp = "4be52833-084f-4a22-b4cf-420b02ef1d66",
+                            ConcurrencyStamp = "a398d1c4-ebcb-4828-b757-0f397778a942",
                             Name = "Superadmin",
                             NormalizedName = "SUPERADMIN"
                         },
                         new
                         {
                             Id = new Guid("f9496293-0393-4fc7-a3d0-51d17df4c821"),
-                            ConcurrencyStamp = "36806483-1e28-4b2b-8821-ed70b97d24b2",
+                            ConcurrencyStamp = "44662a4e-0dd4-4940-952d-0f7d3fd86562",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = new Guid("50bf0616-6bff-491c-800b-bfe7e8bfbbd9"),
-                            ConcurrencyStamp = "eec76a13-405f-434a-8dac-d04eab41b096",
+                            ConcurrencyStamp = "4437f1d9-b246-44f8-995a-221b489a3be5",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -119,6 +119,9 @@ namespace RetselGames.Data.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<Guid?>("ImageId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -162,6 +165,8 @@ namespace RetselGames.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ImageId");
+
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 
@@ -177,7 +182,7 @@ namespace RetselGames.Data.Migrations
                         {
                             Id = new Guid("9e753d47-8f3e-4cde-b395-0260b2fe7960"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c964b3fa-cb2e-4d3e-8a8a-7e86613d8ea7",
+                            ConcurrencyStamp = "28c68e82-5178-4b6d-b9f4-3d1f3ce59047",
                             Email = "superadmin@gmail.com",
                             EmailConfirmed = true,
                             LastName = "Çelik",
@@ -185,10 +190,10 @@ namespace RetselGames.Data.Migrations
                             Name = "Onur",
                             NormalizedEmail = "SUPERADMIN@GMAIL.COM",
                             NormalizedUserName = "SUPERADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDAjVMthwWsHjtIT5GVgE6C77pJCb/FPSNDVER4eZCcKuNCCtyeL54gF2x1nBo5jKQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAqDZK/8QGcogWdEVVE6YXFVTOOGIOYbPK7y3mnLQw+e6CgoFF0cNk6hRA2yRgkIRg==",
                             PhoneNumber = "+905439999999",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "b09941cc-88a0-48d6-b220-9787cab22a61",
+                            SecurityStamp = "366474a8-2eb0-4d30-bf92-db9e918e0c7c",
                             TwoFactorEnabled = false,
                             UserName = "superadmin@gmail.com"
                         },
@@ -196,7 +201,7 @@ namespace RetselGames.Data.Migrations
                         {
                             Id = new Guid("9cbec590-0916-4f4e-9d08-c65e561e81b1"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "779ef97a-40fe-4a4a-8b82-724913eeb492",
+                            ConcurrencyStamp = "a2f2a61b-fc82-4229-b717-1690f5bf7b03",
                             Email = "admin@gmail.com",
                             EmailConfirmed = false,
                             LastName = "Çelik",
@@ -204,10 +209,10 @@ namespace RetselGames.Data.Migrations
                             Name = "Onur",
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPv9i0mjlBU4NX3RAAK5prZ0QpH+LtZOvzj1fGx7iFL2M2CISjn8yvTen5PJsIGTyw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEzoLSecamQbz376bLj4ss3K81YWMInyeqTNiQQHY/wBxftg6cQiabhvVy1r+pDVBw==",
                             PhoneNumber = "+905439999988",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "01a5d711-3bbb-443f-b5b7-621bb69ba7f3",
+                            SecurityStamp = "d12ef9b7-0354-4531-9be4-6e7089b013c9",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
@@ -325,6 +330,9 @@ namespace RetselGames.Data.Migrations
                     b.Property<DateTime?>("DeletedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<Guid?>("ImageId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -338,7 +346,14 @@ namespace RetselGames.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ImageId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Categories");
                 });
@@ -372,7 +387,7 @@ namespace RetselGames.Data.Migrations
                     b.Property<int>("DownloadCount")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("ImageId")
+                    b.Property<Guid?>("ImageId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("IsDeleted")
@@ -469,7 +484,7 @@ namespace RetselGames.Data.Migrations
                     b.Property<DateTime?>("DeletedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("ImageId")
+                    b.Property<Guid?>("ImageId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("IsDeleted")
@@ -538,6 +553,15 @@ namespace RetselGames.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("RetselGames.Entity.Entities.AppUser", b =>
+                {
+                    b.HasOne("RetselGames.Entity.Entities.Image", "Image")
+                        .WithMany("Users")
+                        .HasForeignKey("ImageId");
+
+                    b.Navigation("Image");
+                });
+
             modelBuilder.Entity("RetselGames.Entity.Entities.AppUserClaim", b =>
                 {
                     b.HasOne("RetselGames.Entity.Entities.AppUser", null)
@@ -580,6 +604,23 @@ namespace RetselGames.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("RetselGames.Entity.Entities.Category", b =>
+                {
+                    b.HasOne("RetselGames.Entity.Entities.Image", "Image")
+                        .WithMany("Categories")
+                        .HasForeignKey("ImageId");
+
+                    b.HasOne("RetselGames.Entity.Entities.AppUser", "User")
+                        .WithMany("Categories")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Image");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("RetselGames.Entity.Entities.Game", b =>
                 {
                     b.HasOne("RetselGames.Entity.Entities.Category", "Category")
@@ -590,9 +631,7 @@ namespace RetselGames.Data.Migrations
 
                     b.HasOne("RetselGames.Entity.Entities.Image", "Image")
                         .WithMany("Games")
-                        .HasForeignKey("ImageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ImageId");
 
                     b.HasOne("RetselGames.Entity.Entities.Platform", "Platform")
                         .WithMany("Games")
@@ -611,11 +650,14 @@ namespace RetselGames.Data.Migrations
                 {
                     b.HasOne("RetselGames.Entity.Entities.Image", "Image")
                         .WithMany("News")
-                        .HasForeignKey("ImageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ImageId");
 
                     b.Navigation("Image");
+                });
+
+            modelBuilder.Entity("RetselGames.Entity.Entities.AppUser", b =>
+                {
+                    b.Navigation("Categories");
                 });
 
             modelBuilder.Entity("RetselGames.Entity.Entities.Category", b =>
@@ -625,9 +667,13 @@ namespace RetselGames.Data.Migrations
 
             modelBuilder.Entity("RetselGames.Entity.Entities.Image", b =>
                 {
+                    b.Navigation("Categories");
+
                     b.Navigation("Games");
 
                     b.Navigation("News");
+
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("RetselGames.Entity.Entities.Platform", b =>

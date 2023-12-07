@@ -13,6 +13,8 @@ namespace RetselGames.Entity.Entities
         public string FileType { get; set; }
         public ICollection<Game> Games { get; set; }
         public ICollection<New> News { get; set; }
+        public ICollection<Category> Categories { get; set; }
+        public ICollection<AppUser> Users { get; set; }
 
 
     }

@@ -16,7 +16,7 @@ namespace RetselGames.Entity.Entities
         public int DownloadCount { get; set; }
         public Guid PlatformId { get; set; }
         public Platform Platform { get; set; }
-        public Guid ImageId { get; set; }
+        public Guid? ImageId { get; set; }
         public Image Image { get; set; }
         public Guid CategoryId { get; set; }
         public Category Category { get; set; }
