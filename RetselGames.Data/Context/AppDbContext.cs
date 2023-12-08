@@ -20,8 +20,7 @@ namespace RetselGames.Data.Context
 		{
 		}
 		public DbSet<Game> Games { get; set; }
-		public DbSet<New> News { get; set; }
-		public DbSet<Platform> Platforms { get; set; }
+		public DbSet<New> News { get; set; }		
 		public DbSet<Image> Images { get; set; }
 		public DbSet<Category> Categories { get; set; }
 

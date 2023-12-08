@@ -2,59 +2,63 @@
 <div class="container-xxl flex-grow-1 container-p-y">
 
 
-    <h4 class="py-3 mb-4">
-        <span class="text-muted fw-light">OYUN YÖNETİMİ /</span> OYUNLAR
-    </h4>
+	<h4 class="py-3 mb-4">
+		<span class="text-muted fw-light">OYUN YÖNETİMİ /</span> OYUNLAR
+	</h4>
 
-    <!-- Basic Bootstrap Table -->
-    <div class="card">
-        <h5 class="card-header">Table Basic</h5>
-        <div class="table-responsive text-nowrap">
-            <table class="table table-bordered" id = "gameTables" width="100%" collspacing = "0">
-                <thead>
-                    <tr>
-                        <th>İsim</th>                       
-                        <th>Katagori</th>
-                        <th>Oluşturan</th>
-                        <th>Oluşturulma Tarihi</th>
-                        <th>Durum</th>
-                        <th>İşlemler</th>
-                    </tr>
-                </thead>
-                <tfoot>
-                    <tr>
-                        <th>İsim</th>                        
-                        <th>Katagori</th>
-                        <th>Oluşturan</th>
-                        <th>Oluşturulma Tarihi</th>
-                        <th>Durum</th>
-                        <th>İşlemler</th>                        
-                    </tr>
-                </tfoot>
+	<!-- Basic Bootstrap Table -->
+	<div class="card">
 
-                <tbody class="table-border-bottom-0">
-                    
-                    @foreach (var game in Model)
-                    {
-                        <tr name = "@game.Id">
-                            <td>@game.Name</td>                            
-                            <td>@game.Category.Name</td>
-                            <td>@game.CreatedBy</td>
-                            <td>@game.CreatedDate.ToShortDateString()</td>
-                            <td>@(game.IsDeleted ? "Aktif Değil" : "Aktif" )</td>
-                            <td></td>
-                        </tr>
-                    }
+		<div class="table-responsive text-nowrap m-5">
 
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <!--/ Basic Bootstrap Table -->
+			<a class="btn btn-success mb-3" asp-area="Admin" asp-controller="Game" asp-action="Add">
+				Oyun Ekle <i class="bx bx-plus"></i>
+			</a>
 
-    </div>>
-    @section Scripts
-    {
-        <script src="~/js/gameIndex.js" type="application/ecmascript"></script>
+			<table class="table table-bordered" id="gameTables" width="100%" collspacing="0">
+				<thead>
+					<tr>
+						<th>İsim</th>
+						<th>Katagori</th>
+						<th>Oluşturan</th>
+						<th>Oluşturulma Tarihi</th>
+						<th>Durum</th>
+						<th>İşlemler</th>
+					</tr>
+				</thead>
+				<tfoot>
+					<tr>
+						<th>İsim</th>
+						<th>Katagori</th>
+						<th>Oluşturan</th>
+						<th>Oluşturulma Tarihi</th>
+						<th>Durum</th>
+						<th>İşlemler</th>
+					</tr>
+				</tfoot>
+
+				<tbody class="table-border-bottom-0">
+
+					@foreach (var game in Model)
+					{
+						<tr name="@game.Id">
+							<td>@game.Name</td>
+							<td>@game.Category.Name</td>
+							<td>@game.CreatedBy</td>
+							<td>@game.CreatedDate.ToShortDateString()</td>
+							<td>@(game.IsDeleted ? "Aktif Değil" : "Aktif")</td>
+							<td></td>
+						</tr>
+					}
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<!--/ Basic Bootstrap Table -->
+
+</div>>
+@section Scripts
+	{
+	<script src="~/js/gameIndex.js" type="application/ecmascript"></script>
     }
-    

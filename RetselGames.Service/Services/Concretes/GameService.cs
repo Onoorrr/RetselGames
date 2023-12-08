@@ -22,6 +22,22 @@ namespace RetselGames.Service.Services.Concretes
 			this.mapper = mapper;
 		}
 
+		public async Task CreateGameAsync(GameAddDto gameAddDto)
+		{
+			var userId = Guid.Parse("9E753D47-8F3E-4CDE-B395-0260B2FE7960");
+
+			var game = new Game
+			{
+				Title = gameAddDto.Title,
+				Content = gameAddDto.Content,
+				CategoryId = gameAddDto.CategoryId,
+				UserId = userId
+			};
+
+			await unitofWork.GetRepository<Game>().AddAsync(game);
+			await unitofWork.SaveAsync();
+		}
+
 		public async Task<List<GameDto>> GetAllGamesWithCategoryNonDeletedAsync()
 		{
 			var games = await unitofWork.GetRepository<Game>().GetAllAsync(x => !x.IsDeleted, x => x.Category);

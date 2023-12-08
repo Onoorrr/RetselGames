@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RetselGames.Data.Context;
 
@@ -11,9 +12,10 @@ using RetselGames.Data.Context;
 namespace RetselGames.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231208182434_Init3")]
+    partial class Init3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,21 +55,21 @@ namespace RetselGames.Data.Migrations
                         new
                         {
                             Id = new Guid("e00726f9-87c1-4540-ab1e-3b0d3135868d"),
-                            ConcurrencyStamp = "e822adbd-e30b-4b18-bf76-ebb80b90ec5f",
+                            ConcurrencyStamp = "287d2ad6-145c-4b11-81b7-1501945eda52",
                             Name = "Superadmin",
                             NormalizedName = "SUPERADMIN"
                         },
                         new
                         {
                             Id = new Guid("f9496293-0393-4fc7-a3d0-51d17df4c821"),
-                            ConcurrencyStamp = "c0b20079-c1d1-4490-95b4-8a3bc1392b55",
+                            ConcurrencyStamp = "f6e57c3c-ff24-48d8-975e-f07501889cbe",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = new Guid("50bf0616-6bff-491c-800b-bfe7e8bfbbd9"),
-                            ConcurrencyStamp = "599b2e12-442c-4269-83cb-5115c7ff8a8b",
+                            ConcurrencyStamp = "11d4a5e7-65b0-4c6f-96dd-43cf4fa72d07",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -180,7 +182,7 @@ namespace RetselGames.Data.Migrations
                         {
                             Id = new Guid("9e753d47-8f3e-4cde-b395-0260b2fe7960"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e3682b12-6527-41ca-94b2-a9a1950a3713",
+                            ConcurrencyStamp = "a96e1098-5302-440c-8676-d24e47d13adb",
                             Email = "superadmin@gmail.com",
                             EmailConfirmed = true,
                             LastName = "Çelik",
@@ -188,10 +190,10 @@ namespace RetselGames.Data.Migrations
                             Name = "Onur",
                             NormalizedEmail = "SUPERADMIN@GMAIL.COM",
                             NormalizedUserName = "SUPERADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAENm/Pqtfa8dlljoLpcmybhKaENW5xGikRPl+O139ruIVhmhfpJ8/NKrcqnV2irnRug==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEK2x9zUqAcZAgTHs1x73PJcw1IGOyqMU2m1yrj9NuFn6eOfVThx/tcAjbUG2DRUV/w==",
                             PhoneNumber = "+905439999999",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "a49f0af9-b73a-4ae8-b7bf-3115013de111",
+                            SecurityStamp = "bf471a67-ea12-47c1-994e-4fbacf35208f",
                             TwoFactorEnabled = false,
                             UserName = "superadmin@gmail.com"
                         },
@@ -199,7 +201,7 @@ namespace RetselGames.Data.Migrations
                         {
                             Id = new Guid("9cbec590-0916-4f4e-9d08-c65e561e81b1"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4852aad8-89d1-4690-bce4-45807b4f6d42",
+                            ConcurrencyStamp = "52c878e4-fb3d-43b8-a521-a498f51571af",
                             Email = "admin@gmail.com",
                             EmailConfirmed = false,
                             LastName = "Çelik",
@@ -207,10 +209,10 @@ namespace RetselGames.Data.Migrations
                             Name = "Onur",
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJAChL6xxbCVA+gOeMCrp1G0zb3sIntdJTfvQv2zFxntzFqO7Vw6pcoeuWtVqHK8Sg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGXL6M4lMM6b0b4f85mATmwlAHu+ZFR7eIO4r6FqHAMIGLQevZqDTP+qkaeCkg0DZA==",
                             PhoneNumber = "+905439999988",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c212fad5-3368-439b-b073-177b5fb8ffc0",
+                            SecurityStamp = "8d1c9f7a-2229-4018-a3a7-ec1e258e4888",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
@@ -349,18 +351,6 @@ namespace RetselGames.Data.Migrations
                     b.HasIndex("ImageId");
 
                     b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("d77c1b7f-29e4-4f4f-a9c7-98657fbd3165"),
-                            CreatedBy = "Undefinied",
-                            CreatedDate = new DateTime(2023, 12, 8, 21, 52, 25, 269, DateTimeKind.Local).AddTicks(9747),
-                            DeletedBy = "Undefinied",
-                            IsDeleted = false,
-                            ModifiedBy = "Undefinied",
-                            Name = "Psp"
-                        });
                 });
 
             modelBuilder.Entity("RetselGames.Entity.Entities.Game", b =>

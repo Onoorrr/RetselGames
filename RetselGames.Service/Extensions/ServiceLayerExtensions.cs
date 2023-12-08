@@ -15,7 +15,7 @@ namespace RetselGames.Service.Extensions
 		public static IServiceCollection LoadServiceLayerExtension(this IServiceCollection services)
 		{
 			services.AddScoped<IGameService, GameService>();
-			services.AddScoped<ICategoryServices, CategoryService>();
+			services.AddScoped<ICategoryService, CategoryService>();
 			var assembly = Assembly.GetExecutingAssembly();
 
 			services.AddAutoMapper(assembly);

@@ -13,6 +13,13 @@ namespace RetselGames.Data.Mappings
 	{
 		public void Configure(EntityTypeBuilder<Category> builder)
 		{
+			builder.HasData(new Category
+			{
+				Id = Guid.NewGuid(),
+				Name = "Psp",
+				CreatedDate = DateTime.Now,
+			}
+			);
 			//builder.Property(x => x.(Entitiy'nin değiştirmek istediğimiz propertysi.).HasMaxLength(150);
 		}
 	}
