@@ -40,14 +40,16 @@
 				<tbody class="table-border-bottom-0">
 
 					@foreach (var game in Model)
-					{
+					{	
 						<tr name="@game.Id">
-							<td>@game.Name</td>
+							<td>@game.Title</td>
 							<td>@game.Category.Name</td>
 							<td>@game.CreatedBy</td>
 							<td>@game.CreatedDate.ToShortDateString()</td>
 							<td>@(game.IsDeleted ? "Aktif Değil" : "Aktif")</td>
-							<td></td>
+							<td>
+								<a class="btn btn-primary btn-sm" data-id="@game.Id" asp-area="Admin" asp-controller="Game" asp-action="Update" asp-route-gameId="@game.Id"><i class="bx bxs-edit"></i></a>
+							</td>
 						</tr>
 					}
 

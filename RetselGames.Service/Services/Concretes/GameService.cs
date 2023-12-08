@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RetselGames.Service.Services.Concretes
-{	
+{
 	public class GameService : IGameService
 	{
 		private readonly IUnitofWork unitofWork;
@@ -42,7 +42,25 @@ namespace RetselGames.Service.Services.Concretes
 		{
 			var games = await unitofWork.GetRepository<Game>().GetAllAsync(x => !x.IsDeleted, x => x.Category);
 			var map = mapper.Map<List<GameDto>>(games);
-			return map;	
+			return map;
 		}
-	}	
+		public async Task<GameDto> GetaGameWithCategoryNonDeletedAsync(Guid gameId)
+		{
+			var game = await unitofWork.GetRepository<Game>().GetAsync(x => !x.IsDeleted && x.Id == gameId, x => x.Category);
+			var map = mapper.Map<GameDto>(game);
+			return map;
+		}
+		public async Task UpdateGameAsync(GameUpdateDto gameUpdateDto)
+		{
+			var game = await unitofWork.GetRepository<Game>().GetAsync(x => !x.IsDeleted && x.Id == gameUpdateDto.Id, x => x.Category);
+			
+			game.Title = gameUpdateDto.Title;
+			game.Content = gameUpdateDto.Content;
+			game.CategoryId = gameUpdateDto.CategoryId; 
+
+			await unitofWork.GetRepository<Game>().UpdateAsync(game);
+			await unitofWork.SaveAsync();
+		}
+	}
+
 }

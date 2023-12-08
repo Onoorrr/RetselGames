@@ -14,6 +14,8 @@ namespace RetselGames.Service.AutoMapper.Games
 		public GameProfile()
 		{
 			CreateMap<GameDto, Game>().ReverseMap();
+			CreateMap<GameUpdateDto, Game>().ReverseMap();
+			CreateMap<GameUpdateDto, GameDto>().ReverseMap();
 		}
 	}
 }

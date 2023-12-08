@@ -38,7 +38,7 @@ namespace RetselGames.Data.Repositories.Concretes
 			await Table.AddAsync(entity);
 		}
 
-		public async Task<T> GetAsync(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] incluedeProperties)
+		public async Task<T> GetAsync(Expression<Func<T, bool>> predicate = null, params Expression<Func<T, object>>[] incluedeProperties)
 		{
 			IQueryable<T> query = Table;
 			query = query.Where(predicate);

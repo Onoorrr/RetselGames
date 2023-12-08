@@ -10,6 +10,9 @@ namespace RetselGames.Service.Services.Abstractions
 	public interface IGameService
 	{		
 		Task<List<GameDto>> GetAllGamesWithCategoryNonDeletedAsync();
+		Task<GameDto> GetaGameWithCategoryNonDeletedAsync(Guid gameid);
+		Task UpdateGameAsync(GameUpdateDto gameUpdateDto);
 		Task CreateGameAsync(GameAddDto gameAddDto);
+		
 	}
 }
