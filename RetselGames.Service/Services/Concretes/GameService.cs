@@ -25,14 +25,9 @@ namespace RetselGames.Service.Services.Concretes
 		public async Task CreateGameAsync(GameAddDto gameAddDto)
 		{
 			var userId = Guid.Parse("9E753D47-8F3E-4CDE-B395-0260B2FE7960");
+			var imageId = Guid.Parse("85DB2D8C-646C-4B7B-AED2-9CC7C079987E");
 
-			var game = new Game
-			{
-				Title = gameAddDto.Title,
-				Content = gameAddDto.Content,
-				CategoryId = gameAddDto.CategoryId,
-				UserId = userId
-			};
+			var game = new Game(gameAddDto.Title, gameAddDto.Content, gameAddDto.CategoryId, userId, imageId);
 
 			await unitofWork.GetRepository<Game>().AddAsync(game);
 			await unitofWork.SaveAsync();
@@ -53,10 +48,10 @@ namespace RetselGames.Service.Services.Concretes
 		public async Task UpdateGameAsync(GameUpdateDto gameUpdateDto)
 		{
 			var game = await unitofWork.GetRepository<Game>().GetAsync(x => !x.IsDeleted && x.Id == gameUpdateDto.Id, x => x.Category);
-			
+
 			game.Title = gameUpdateDto.Title;
 			game.Content = gameUpdateDto.Content;
-			game.CategoryId = gameUpdateDto.CategoryId; 
+			game.CategoryId = gameUpdateDto.CategoryId;
 
 			await unitofWork.GetRepository<Game>().UpdateAsync(game);
 			await unitofWork.SaveAsync();
@@ -69,7 +64,7 @@ namespace RetselGames.Service.Services.Concretes
 			game.IsDeleted = true;
 			game.DeletedDate = DateTime.Now;
 
-			await unitofWork.GetRepository<Game>().UpdateAsync(game);
+			await unitofWork.GetRepository<Game>().UpdateAsync(gameI);
 			await unitofWork.SaveAsync();
 		}
 	}

@@ -5,25 +5,25 @@ using RetselGames.Service.Services.Abstractions;
 
 namespace RetselGames.Web.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+	[Area("Admin")]
 	public class GameController : Controller
-    {
+	{
 		private readonly IGameService gameService;
 		private readonly ICategoryService categoryService;
 		private readonly IMapper mapper;
 
 		public GameController(IGameService gameService, ICategoryService categoryService, IMapper mapper)
-        {
+		{
 			this.gameService = gameService;
 			this.categoryService = categoryService;
 			this.mapper = mapper;
 		}
-        public async Task<IActionResult> Index()
-        {
+		public async Task<IActionResult> Index()
+		{
 			var games = await gameService.GetAllGamesWithCategoryNonDeletedAsync();
 
 			return View(games);
-        }
+		}
 		[HttpGet]
 		public async Task<IActionResult> Add()
 		{
@@ -34,7 +34,7 @@ namespace RetselGames.Web.Areas.Admin.Controllers
 		public async Task<IActionResult> Add(GameAddDto gameAddDto)
 		{
 			await gameService.CreateGameAsync(gameAddDto);
-			RedirectToAction("Index", "Game", new { Area = "Admin" });
+			return RedirectToAction("Index", "Game", new { Area = "Admin" });
 
 			var categories = await categoryService.GetAllCategoriesNonDeleted();
 			return View(new GameAddDto { Categories = categories });
@@ -44,8 +44,8 @@ namespace RetselGames.Web.Areas.Admin.Controllers
 		{
 			var game = await gameService.GetaGameWithCategoryNonDeletedAsync(gameId);
 			var categories = await categoryService.GetAllCategoriesNonDeleted();
-			var gameUpdateDto = mapper.Map<GameUpdateDto>(game);		
-			gameUpdateDto.Categories = categories;	
+			var gameUpdateDto = mapper.Map<GameUpdateDto>(game);
+			gameUpdateDto.Categories = categories;
 			return View(gameUpdateDto);
 		}
 		[HttpPost]
@@ -60,8 +60,8 @@ namespace RetselGames.Web.Areas.Admin.Controllers
 		public async Task<IActionResult> Delete(Guid gameId)
 		{
 			await gameService.SafeDeleteArticleAsync(gameId);
-			
-		return	RedirectToAction("Index", "Game", new { Area = "Admin" });
+
+			return RedirectToAction("Index", "Game", new { Area = "Admin" });
 		}
 	}
 }
