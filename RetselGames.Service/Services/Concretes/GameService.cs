@@ -61,6 +61,17 @@ namespace RetselGames.Service.Services.Concretes
 			await unitofWork.GetRepository<Game>().UpdateAsync(game);
 			await unitofWork.SaveAsync();
 		}
+
+		public async Task SafeDeleteArticleAsync(Guid gameId)
+		{
+			var game = await unitofWork.GetRepository<Game>().GetByGuidAsync(gameId);
+
+			game.IsDeleted = true;
+			game.DeletedDate = DateTime.Now;
+
+			await unitofWork.GetRepository<Game>().UpdateAsync(game);
+			await unitofWork.SaveAsync();
+		}
 	}
 
 }

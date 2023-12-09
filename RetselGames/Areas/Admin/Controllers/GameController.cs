@@ -56,5 +56,12 @@ namespace RetselGames.Web.Areas.Admin.Controllers
 			gameUpdateDto.Categories = categories;
 			return View(gameUpdateDto);
 		}
+
+		public async Task<IActionResult> Delete(Guid gameId)
+		{
+			await gameService.SafeDeleteArticleAsync(gameId);
+			
+		return	RedirectToAction("Index", "Game", new { Area = "Admin" });
+		}
 	}
 }

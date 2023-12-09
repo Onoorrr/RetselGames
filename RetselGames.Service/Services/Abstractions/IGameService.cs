@@ -13,6 +13,8 @@ namespace RetselGames.Service.Services.Abstractions
 		Task<GameDto> GetaGameWithCategoryNonDeletedAsync(Guid gameid);
 		Task UpdateGameAsync(GameUpdateDto gameUpdateDto);
 		Task CreateGameAsync(GameAddDto gameAddDto);
-		
+		Task SafeDeleteArticleAsync(Guid gameId);
+
+
 	}
 }

@@ -49,6 +49,7 @@
 							<td>@(game.IsDeleted ? "Aktif Değil" : "Aktif")</td>
 							<td>
 								<a class="btn btn-primary btn-sm" data-id="@game.Id" asp-area="Admin" asp-controller="Game" asp-action="Update" asp-route-gameId="@game.Id"><i class="bx bxs-edit"></i></a>
+								<a class="btn btn-danger btn-sm" data-id="@game.Id" asp-area="Admin" asp-controller="Game" asp-action="Delete" asp-route-gameId="@game.Id"><i class="bx bx-minus-circle"></i></a>
 							</td>
 						</tr>
 					}
